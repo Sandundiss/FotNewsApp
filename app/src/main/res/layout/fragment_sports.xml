@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="16dp">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        >
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Inter-Faculty Championship 2025"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            android:layout_marginBottom="8dp"
+            android:layout_gravity="center_horizontal"
+            tools:ignore="HardcodedText" />
+
+        <!-- Slideshow ViewPager2 -->
+        <androidx.viewpager2.widget.ViewPager2
+            android:id="@+id/slideshowViewPager"
+            android:layout_width="match_parent"
+            android:layout_height="500dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginBottom="16dp"/>
+
+
+        <LinearLayout
+            android:id="@+id/dotsLayout"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:orientation="horizontal"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="INTER-FACULTY CHAMPIONSHIP 25"
+            android:layout_marginBottom="4dp"
+            android:layout_gravity="center_horizontal"
+            tools:ignore="HardcodedText" />
+
+        <!-- Rest of your existing content -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="STARTING FROM MAY 3RD TO JULY 27TH"
+            android:layout_marginBottom="4dp"
+            android:layout_gravity="center_horizontal"
+            tools:ignore="HardcodedText" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="GET YOUR FACULTY READY"
+            android:layout_marginBottom="16dp"
+            android:layout_gravity="center_horizontal"
+            tools:ignore="HardcodedText" />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Techno Championship 2025 Award Ceremony organized by Techno Sports, Faculty of Technology University of Colombo was successfully conducted on 13th of December 2024 at Indoor stadium. ✨
+            Techno Championship 2024 (Day 04) organized by Techno Sports, Faculty of Technology University of Colombo was successfully conducted on 13th of December 2024 at UOC ground , Indoor stadium. ✨"
+            android:layout_marginBottom="14dp"
+            android:layout_gravity="center_horizontal"
+            tools:ignore="HardcodedText" />
+        <!-- Rest of your text views... -->
+    </LinearLayout>
+</ScrollView>

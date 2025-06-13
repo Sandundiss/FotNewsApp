@@ -1,0 +1,25 @@
+<resources>
+    <color name="black">#FF000000</color>
+    <color name="white">#FFFFFFFF</color>
+    <color name="dark_gray">#FF222222</color>
+    <color name="light_gray">#FFCCCCCC</color>
+    <color name="red">#4D0000</color>
+
+    <!-- Material 3 color roles -->
+    <color name="md_theme_light_primary">@color/black</color>
+    <color name="md_theme_light_onPrimary">@color/white</color>
+    <color name="md_theme_light_primaryContainer">@color/black</color>
+    <color name="md_theme_light_onPrimaryContainer">@color/white</color>
+    <color name="md_theme_light_surface">@color/black</color>
+    <color name="md_theme_light_onSurface">@color/white</color>
+
+    <!-- Dark theme versions (same for true black theme) -->
+    <color name="md_theme_dark_primary">@color/black</color>
+    <color name="md_theme_dark_onPrimary">@color/white</color>
+    <color name="md_theme_dark_primaryContainer">@color/black</color>
+    <color name="md_theme_dark_onPrimaryContainer">@color/white</color>
+    <color name="md_theme_dark_surface">@color/black</color>
+    <color name="md_theme_dark_onSurface">@color/white</color>
+
+
+</resources>

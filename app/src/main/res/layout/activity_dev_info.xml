@@ -1,0 +1,184 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:gravity="center"
+    android:background="@color/black">
+
+    <TextView
+        android:id="@+id/textViewDevInfo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/edit_your_user_profile"
+        android:layout_marginTop="70dp"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        android:textColor="@color/white" />
+
+    <!-- Main Content -->
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:padding="16dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <!-- User Info Section -->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="User Info."
+                android:layout_marginTop="30dp"
+                android:textSize="20sp"
+                android:textStyle="bold"
+                android:layout_marginBottom="16dp"
+                tools:ignore="HardcodedText" />
+
+            <TextView
+                android:id="@+id/tvUsername"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Username: Loading..."
+                android:textSize="16sp"
+                android:textColor="@color/white"
+                android:layout_marginBottom="8dp" />
+
+            <TextView
+                android:id="@+id/tvEmail"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Email: Loading..."
+                android:textSize="16sp"
+                android:textColor="@color/white"
+                android:layout_marginBottom="16dp" />
+
+            <!-- Divider -->
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@color/light_gray"
+                android:layout_marginVertical="16dp" />
+
+            <!-- Clear Info Button -->
+            <Button
+                android:id="@+id/btnEditInfo"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Clear Info."
+                android:textAllCaps="false"
+                android:textColor="@color/black"
+                android:backgroundTint="@color/white"
+                android:layout_marginBottom="20dp"
+                android:layout_marginHorizontal="48dp" />
+
+            <!-- Sign Out Button -->
+            <Button
+                android:id="@+id/btnSignOut"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Sign Out"
+                android:textAllCaps="false"
+                android:textColor="@color/black"
+                android:backgroundTint="@color/white"
+                android:layout_marginBottom="20dp"
+                android:layout_marginHorizontal="48dp" />
+
+            <!-- Edit User Information Section -->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Edit User Information"
+                android:layout_marginTop="30dp"
+                android:textSize="20sp"
+                android:textStyle="bold"
+                android:layout_marginBottom="16dp"
+                tools:ignore="HardcodedText" />
+
+            <!-- Name -->
+            <TextView
+                android:id="@+id/tvName"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Name:"
+                android:layout_marginBottom="8dp"
+                tools:ignore="HardcodedText" />
+
+            <EditText
+                android:id="@+id/EditName"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="8dp" />
+
+            <!-- Student Number -->
+            <TextView
+                android:id="@+id/tvStudentNumber"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Student Number:"
+                android:layout_marginBottom="8dp"
+                tools:ignore="HardcodedText" />
+
+            <EditText
+                android:id="@+id/EditStudentNumber"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="8dp" />
+
+            <!-- Personal Statement -->
+            <TextView
+                android:id="@+id/tvPersonalStatement"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Personal Statement:"
+                android:layout_marginBottom="8dp"
+                tools:ignore="HardcodedText" />
+
+            <EditText
+                android:id="@+id/EditPersonalStatement"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="8dp" />
+
+            <!-- Release Version -->
+            <TextView
+                android:id="@+id/tvReleaseVersion"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Release Version:"
+                tools:ignore="HardcodedText" />
+
+            <EditText
+                android:id="@+id/EditReleaseVersion"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="20dp" />
+
+            <!-- Submit Button -->
+            <Button
+                android:id="@+id/btnSubmit"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Submit"
+                android:textAllCaps="false"
+                android:textColor="@color/black"
+                android:backgroundTint="@color/white"
+                android:layout_marginHorizontal="48dp" />
+
+        </LinearLayout>
+    </ScrollView>
+
+
+    <com.google.android.material.bottomnavigation.BottomNavigationView
+        android:id="@+id/bottomNavigationView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:menu="@menu/bottom_nav_menu"
+        app:labelVisibilityMode="labeled" />
+
+</LinearLayout>

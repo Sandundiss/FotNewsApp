@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="16dp">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        >
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/technova_x_2025_robotics_workshop"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            android:layout_marginBottom="8dp"
+            android:layout_gravity="center_horizontal"/>
+
+        <!-- Slideshow ViewPager2 -->
+        <androidx.viewpager2.widget.ViewPager2
+            android:id="@+id/slideshowViewPager"
+            android:layout_width="match_parent"
+            android:layout_height="500dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginBottom="16dp"/>
+
+        <!-- Dots Indicator -->
+        <LinearLayout
+            android:id="@+id/dotsLayout"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:orientation="horizontal"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="TECHNOVA-X 2025 Robotics Workshop"
+            android:layout_marginBottom="4dp"
+            android:layout_gravity="center_horizontal"
+            tools:ignore="HardcodedText" />
+
+        <!-- Rest of your existing content -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="TECHNOVA-X 2025 Robotics Workshop organized by Innovation Club, Faculty of Technology, University of Colombo was successfully held at Rajasinghe Maha Vidyalaya Imbulgoda, leaving a meaningful impact on all who participated. ✨"
+            android:layout_marginBottom="4dp"
+            android:layout_gravity="center_horizontal"
+            tools:ignore="HardcodedText" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="නැණ යාත්‍රා 1st Edition - Arduino , Robotics Workshop organized by Society of Instrumentation and Automation Technology, Faculty of Technology, University of Colombo was successfully held at Sri Rahula Central College Alawwa, leaving a meaningful impact on all who participated. ✨
+Explore the photo album to revisit the highlights and moments of togetherness captured throughout the event.
+Covered by Techno Media - The Official Media Grid of Faculty of Technology 🎓
+"
+            android:layout_marginBottom="14dp"
+            android:layout_gravity="center_horizontal"
+            tools:ignore="HardcodedText" />
+        <!-- Rest of your text views... -->
+    </LinearLayout>
+</ScrollView>

@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.example.fotnewsapp">
+    <application
+        android:allowBackup="true"
+        android:icon="@drawable/fot_logo"
+        android:label="@string/app_name"
+        android:roundIcon="@drawable/fot_logo1"
+        android:supportsRtl="true"
+        android:theme="@style/Theme.FOTNewsApp"
+        >
+        <activity
+            android:name=".SplashActivity"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity android:name=".LoginActivity" />
+        <activity android:name=".SignupActivity" />
+        <activity android:name=".MainActivity" />
+        <activity android:name=".ProfileActivity" />
+        <activity android:name=".DevInfoActivity" />
+        <activity android:name=".SettingsActivity"/>
+
+    </application>
+
+</manifest>

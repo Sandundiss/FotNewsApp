@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    android:backgroundTint="@color/dark_gray">
+
+    <item
+        android:id="@+id/nav_home"
+        android:icon="@drawable/baseline_home"
+        android:backgroundTint="@color/white"
+        android:title="@string/home"/>
+    <item
+        android:id="@+id/edit_info"
+        android:icon="@drawable/baseline_edit"
+        android:backgroundTint="@color/white"
+        android:title="Edit Info."/>
+    <item
+        android:id="@+id/nav_profile"
+        android:icon="@drawable/outline_contacts_product_24"
+        android:backgroundTint="@color/dark_gray"
+        android:title="@string/profile"/>
+    <item
+        android:id="@+id/nav_saved"
+        android:icon="@drawable/outline_file_save_24"
+        android:backgroundTint="@color/dark_gray"
+        android:title="@string/saved"/>
+    <item
+        android:id="@+id/nav_settings"
+        android:icon="@drawable/ic_settings"
+        android:backgroundTint="@color/dark_gray"
+        android:title="@string/settings" />
+
+</menu>

@@ -6,10 +6,10 @@ public class UserProfile {
     private String personalStatement;
     private String releaseVersion;
 
-    // Default constructor required for calls to DataSnapshot.getValue(UserProfile.class)
+
     public UserProfile() {}
 
-    // Constructor
+
     public UserProfile(String name, String studentNumber, String personalStatement, String releaseVersion) {
         this.name = name;
         this.studentNumber = studentNumber;

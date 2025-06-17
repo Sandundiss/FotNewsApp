@@ -39,13 +39,13 @@ public class SportsFragment extends Fragment {
     }
 
     private void setupSlideshow() {
-        // Set up ViewPager2
+
         viewPager.setAdapter(new SlideAdapter(slideImages));
 
-        // Set up dots indicator
+
         setupDotsIndicator();
 
-        // Auto-scroll slideshow
+
         Handler handler = new Handler();
         Runnable runnable = new Runnable() {
             @Override
@@ -61,7 +61,7 @@ public class SportsFragment extends Fragment {
         };
         handler.postDelayed(runnable, 3000);
 
-        // Clean up when view is destroyed
+
         viewPager.registerOnPageChangeCallback(new ViewPager2.OnPageChangeCallback() {
             @Override
             public void onPageSelected(int position) {

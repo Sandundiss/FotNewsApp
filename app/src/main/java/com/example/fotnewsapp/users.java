@@ -7,10 +7,9 @@ public class users {
     private String email;
     private String password;
 
-    // Default constructor required for calls to DataSnapshot.getValue(users.class)
+
     public users() {}
 
-    // Constructor
     public users(String userId, String username, String email, String password) {
         this.userId = userId;
         this.username = username;
@@ -18,7 +17,7 @@ public class users {
         this.password = password;
     }
 
-    // Getters and Setters
+
     public String getUserId() {
         return userId;
     }

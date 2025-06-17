@@ -29,7 +29,6 @@ public class DevInfoActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_dev_info);
 
-
         editName = findViewById(R.id.EditName);
         editStudentNumber = findViewById(R.id.EditStudentNumber);
         editPersonalStatement = findViewById(R.id.EditPersonalStatement);
@@ -43,31 +42,19 @@ public class DevInfoActivity extends AppCompatActivity {
         firebaseAuth = FirebaseAuth.getInstance();
         databaseReference = FirebaseDatabase.getInstance().getReference("UserProfile");
 
-
         String username = getIntent().getStringExtra("username");
         String email = getIntent().getStringExtra("email");
-
 
         tvUsername.setText("Username: " + (username != null ? username : "N/A"));
         tvEmail.setText("Email: " + (email != null ? email : "N/A"));
 
-
         loadUserInfo();
 
-
         btnClearInfo.setOnClickListener(v -> clearUserInfoFields());
-
-
-        btnClearInfo.setOnClickListener(v -> clearUserInfoFields());
-
-
         btnSubmit.setOnClickListener(v -> submitUserInfoToDatabase());
-
         btnSignOut.setOnClickListener(v -> showSignOutConfirmation());
 
-
         BottomNavigationView bottomNavigationView = findViewById(R.id.bottomNavigationView);
-
 
         bottomNavigationView.setOnItemSelectedListener(item -> {
             int itemId = item.getItemId();
@@ -81,48 +68,38 @@ public class DevInfoActivity extends AppCompatActivity {
                 startActivity(new Intent(DevInfoActivity.this, ProfileActivity.class));
                 return true;
             } else if (itemId == R.id.nav_settings) {
-
-                return false;
-            }else if (itemId == R.id.nav_settings) {
-
                 startActivity(new Intent(DevInfoActivity.this, SettingsActivity.class));
                 return true;
             }
-            return true;
+            return false;
         });
-
     }
-
 
     private void loadUserInfo() {
         if (firebaseAuth.getCurrentUser() != null) {
-            String username = firebaseAuth.getCurrentUser().getDisplayName();
             String userEmail = firebaseAuth.getCurrentUser().getEmail();
-
             tvEmail.setText("Email: " + (userEmail != null ? userEmail : "N/A"));
 
-            if (username != null) {
-                databaseReference.child(username).get().addOnCompleteListener(task -> {
-                    if (task.isSuccessful() && task.getResult().exists()) {
-                        UserProfile userProfile = task.getResult().getValue(UserProfile.class);
-                        if (userProfile != null) {
-                            tvUsername.setText("Username: " + userProfile.getName());
-                        } else {
-                            tvUsername.setText("Username: Not found");
-                        }
+            String userId = firebaseAuth.getCurrentUser().getUid();
+
+            databaseReference.child(userId).get().addOnCompleteListener(task -> {
+                if (task.isSuccessful() && task.getResult().exists()) {
+                    UserProfile userProfile = task.getResult().getValue(UserProfile.class);
+                    if (userProfile != null && !TextUtils.isEmpty(userProfile.getName())) {
+                        tvUsername.setText("Username: " + userProfile.getName());
                     } else {
-                        Toast.makeText(this, "Failed to load user information.", Toast.LENGTH_SHORT).show();
+                        tvUsername.setText("Username: Not set");
                     }
-                });
-            } else {
-                tvUsername.setText("Username: Not found");
-            }
+                } else {
+                    tvUsername.setText("Username: Not found");
+                    Toast.makeText(this, "Failed to load user information.", Toast.LENGTH_SHORT).show();
+                }
+            });
         } else {
             tvEmail.setText("Email: Not logged in");
             tvUsername.setText("Username: Not logged in");
         }
     }
-
 
     private void clearUserInfoFields() {
         editName.setText("");
@@ -131,7 +108,6 @@ public class DevInfoActivity extends AppCompatActivity {
         editReleaseVersion.setText("");
         Toast.makeText(this, "Fields Cleared. Enter new data.", Toast.LENGTH_SHORT).show();
     }
-
 
     private void submitUserInfoToDatabase() {
         String name = editName.getText().toString().trim();
@@ -146,11 +122,11 @@ public class DevInfoActivity extends AppCompatActivity {
         }
 
         if (firebaseAuth.getCurrentUser() != null) {
-            String username = firebaseAuth.getCurrentUser().getUid();
+            String userId = firebaseAuth.getCurrentUser().getUid();
 
             users users = new users(name, studentNumber, personalStatement, releaseVersion);
 
-            databaseReference.child(username).setValue(users)
+            databaseReference.child(userId).setValue(users)
                     .addOnSuccessListener(unused -> {
                         Toast.makeText(this, "User Information Updated Successfully.", Toast.LENGTH_SHORT).show();
                         clearUserInfoFields();
@@ -162,7 +138,6 @@ public class DevInfoActivity extends AppCompatActivity {
         }
     }
 
-
     private void showSignOutConfirmation() {
         new AlertDialog.Builder(this)
                 .setTitle("Sign Out")
@@ -171,7 +146,6 @@ public class DevInfoActivity extends AppCompatActivity {
                 .setNegativeButton("No", null)
                 .show();
     }
-
 
     private void signOutUser() {
         FirebaseAuth.getInstance().signOut();

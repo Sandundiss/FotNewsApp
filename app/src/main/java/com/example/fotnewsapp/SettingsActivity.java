@@ -10,7 +10,6 @@ import android.widget.Button;
 import android.widget.Toast;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
-import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 public class SettingsActivity extends AppCompatActivity {
 
@@ -21,30 +20,28 @@ public class SettingsActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_settings);
 
-        // Initialize Firebase Auth
         firebaseAuth = FirebaseAuth.getInstance();
 
         FirebaseDatabase.getInstance().setLogLevel(Logger.Level.DEBUG);
-        // Initialize Buttons
+
         Button btnEditInfo = findViewById(R.id.btnEditInfo);
         Button btnDeleteAccount = findViewById(R.id.btnDeleteAccount);
         Button btnSignOut = findViewById(R.id.btnSignOut);
 
-        // Edit Info button: open edit info activity
         btnEditInfo.setOnClickListener(v -> {
             startActivity(new Intent(SettingsActivity.this, DevInfoActivity.class));
         });
 
-        // Delete Account button: show confirmation dialog to delete account
+
         btnDeleteAccount.setOnClickListener(v -> showDeleteAccountDialog());
 
-        // Sign Out button: sign out the user
+
         btnSignOut.setOnClickListener(v -> signOutUser());
 
 
     }
 
-    // Function to show a confirmation dialog for account deletion
+
     private void showDeleteAccountDialog() {
         new AlertDialog.Builder(this)
                 .setTitle("Delete Account")
@@ -54,16 +51,16 @@ public class SettingsActivity extends AppCompatActivity {
                 .show();
     }
 
-    // Function to delete the user's account
+
     private void deleteAccount() {
         FirebaseUser user = firebaseAuth.getCurrentUser();
         if (user != null) {
             String userId = user.getUid();
 
-            // Initialize Firestore or Realtime Database (depending on what you're using)
+
             DatabaseReference userRef = FirebaseDatabase.getInstance().getReference("UserProfile").child(userId);
 
-            // Remove user data from database
+
             userRef.removeValue()
                     .addOnCompleteListener(task -> {
                         if (task.isSuccessful()) {
@@ -87,7 +84,7 @@ public class SettingsActivity extends AppCompatActivity {
         }
     }
 
-    // Function to sign out the user
+
     private void signOutUser() {
         firebaseAuth.signOut();
         Toast.makeText(this, "Signed out successfully.", Toast.LENGTH_SHORT).show();

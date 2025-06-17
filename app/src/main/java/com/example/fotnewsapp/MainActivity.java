@@ -21,14 +21,14 @@ public class MainActivity extends AppCompatActivity {
         Button btnEvents = findViewById(R.id.btnEvents);
         BottomNavigationView bottomNavigationView = findViewById(R.id.bottomNavigationView);
 
-        // Load default fragment
+
         loadFragment(new SportsFragment());
 
         btnSports.setOnClickListener(v -> loadFragment(new SportsFragment()));
         btnAcademic.setOnClickListener(v -> loadFragment(new AcademicFragment()));
         btnEvents.setOnClickListener(v -> loadFragment(new EventsFragment()));
 
-        // Bottom navigation setup
+
         bottomNavigationView.setOnItemSelectedListener(item -> {
             int itemId = item.getItemId();
             if (itemId == R.id.nav_home) {

@@ -13,7 +13,7 @@ import com.google.firebase.database.FirebaseDatabase;
 
 @SuppressLint("CustomSplashScreen")
 public class SplashActivity extends AppCompatActivity {
-    private static final int SPLASH_DELAY = 4000;
+    private static final int SPLASH_DELAY = 5000;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

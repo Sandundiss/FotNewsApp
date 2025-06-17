@@ -39,19 +39,19 @@ public class MainActivity extends AppCompatActivity {
                 return true;
             } else if (itemId == R.id.nav_profile) {
                 startActivity(new Intent(MainActivity.this, ProfileActivity.class));
-                return false;
+                return true;
             } else if (itemId == R.id.nav_settings) {
                 startActivity(new Intent(MainActivity.this, SettingsActivity.class));
                 return true;
             }
-            return true;
+            return false;
         });
     }
 
     private void loadFragment(Fragment fragment) {
         FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
         transaction.replace(R.id.newsContainer, fragment);
-        transaction.addToBackStack(null);  // Add this line
+        transaction.addToBackStack(null);
         transaction.commit();
     }
 }

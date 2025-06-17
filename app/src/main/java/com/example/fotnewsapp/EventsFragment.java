@@ -40,13 +40,13 @@ public class EventsFragment extends Fragment {
     }
 
     private void setupSlideshow() {
-        // Set up ViewPager2
+
         viewPager.setAdapter(new SlideAdapter(slideImages));
 
-        // Set up dots indicator
+
         setupDotsIndicator();
 
-        // Auto-scroll slideshow
+
         Handler handler = new Handler();
         Runnable runnable = new Runnable() {
             @Override

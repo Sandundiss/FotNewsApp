@@ -23,5 +23,4 @@
         android:icon="@drawable/ic_settings"
         android:backgroundTint="@color/dark_gray"
         android:title="@string/settings" />
-
 </menu>

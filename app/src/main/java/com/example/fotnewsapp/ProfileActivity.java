@@ -35,7 +35,6 @@ public class ProfileActivity extends AppCompatActivity {
             }
         });
 
-        // Set bottom navigation listener
         bottomNavigationView.setOnItemSelectedListener(item -> {
             int itemId = item.getItemId();
             if (itemId == R.id.nav_home) {

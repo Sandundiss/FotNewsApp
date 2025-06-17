@@ -40,7 +40,6 @@ public class DevInfoActivity extends AppCompatActivity {
         tvUsername = findViewById(R.id.tvUsername);
         tvEmail = findViewById(R.id.tvEmail);
 
-
         firebaseAuth = FirebaseAuth.getInstance();
         databaseReference = FirebaseDatabase.getInstance().getReference("UserProfile");
 
@@ -48,13 +47,19 @@ public class DevInfoActivity extends AppCompatActivity {
         String username = getIntent().getStringExtra("username");
         String email = getIntent().getStringExtra("email");
 
+
         tvUsername.setText("Username: " + (username != null ? username : "N/A"));
         tvEmail.setText("Email: " + (email != null ? email : "N/A"));
 
 
         loadUserInfo();
 
+
         btnClearInfo.setOnClickListener(v -> clearUserInfoFields());
+
+
+        btnClearInfo.setOnClickListener(v -> clearUserInfoFields());
+
 
         btnSubmit.setOnClickListener(v -> submitUserInfoToDatabase());
 
@@ -76,6 +81,10 @@ public class DevInfoActivity extends AppCompatActivity {
                 startActivity(new Intent(DevInfoActivity.this, ProfileActivity.class));
                 return true;
             } else if (itemId == R.id.nav_settings) {
+
+                return false;
+            }else if (itemId == R.id.nav_settings) {
+
                 startActivity(new Intent(DevInfoActivity.this, SettingsActivity.class));
                 return true;
             }
@@ -162,6 +171,7 @@ public class DevInfoActivity extends AppCompatActivity {
                 .setNegativeButton("No", null)
                 .show();
     }
+
 
     private void signOutUser() {
         FirebaseAuth.getInstance().signOut();

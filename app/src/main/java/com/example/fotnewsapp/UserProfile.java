@@ -9,6 +9,7 @@ public class UserProfile {
 
     public UserProfile() {}
 
+
     public UserProfile(String name, String studentNumber, String personalStatement, String releaseVersion) {
         this.name = name;
         this.studentNumber = studentNumber;

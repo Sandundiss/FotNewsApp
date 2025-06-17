@@ -28,19 +28,19 @@ public class LoginActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
 
-        // Initialize Firebase Auth
+
         firebaseAuth = FirebaseAuth.getInstance();
 
-        // Initialize Firebase Database reference
+
         usersDatabase = FirebaseDatabase.getInstance().getReference("users");
 
-        // Initialize views
+
         etUsername = findViewById(R.id.etUsername);
         etPassword = findViewById(R.id.etPassword);
         Button btnLogin = findViewById(R.id.btnLogin);
         TextView tvCreateAccount = findViewById(R.id.tvCreateAccount);
 
-        // Set up login button click listener
+
         btnLogin.setOnClickListener(v -> {
             String username = etUsername.getText().toString().trim();
             String password = etPassword.getText().toString().trim();

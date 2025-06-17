@@ -42,6 +42,7 @@ public class AcademicFragment extends Fragment {
     }
 
     private void setupSlideshow() {
+
         viewPager.setAdapter(new SlideAdapter(slideImages));
 
 
@@ -63,7 +64,7 @@ public class AcademicFragment extends Fragment {
         };
         handler.postDelayed(runnable, 3000);
 
-        // Clean up when view is destroyed
+
         viewPager.registerOnPageChangeCallback(new ViewPager2.OnPageChangeCallback() {
             @Override
             public void onPageSelected(int position) {

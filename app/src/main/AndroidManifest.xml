@@ -22,7 +22,9 @@
         <activity android:name=".MainActivity" />
         <activity android:name=".ProfileActivity" />
         <activity android:name=".DevInfoActivity" />
-        <activity android:name=".SettingsActivity"/>
+        <activity android:name=".SettingsActivity"
+            android:exported="true" />
+
 
     </application>
 

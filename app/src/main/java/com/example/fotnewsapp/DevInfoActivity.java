@@ -77,10 +77,7 @@ public class DevInfoActivity extends AppCompatActivity {
             } else if (itemId == R.id.nav_profile) {
                 startActivity(new Intent(DevInfoActivity.this, ProfileActivity.class));
                 return false;
-            } else if (itemId == R.id.nav_saved) {
-                // Handle saved click
-                return true;
-            } else if (itemId == R.id.nav_settings) {
+            }else if (itemId == R.id.nav_settings) {
                 startActivity(new Intent(DevInfoActivity.this, SettingsActivity.class));
                 return true;
             }

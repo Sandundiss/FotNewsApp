@@ -25,27 +25,37 @@ public class SettingsActivity extends AppCompatActivity {
 
         firebaseAuth = FirebaseAuth.getInstance();
 
-
+        // Initialize buttons
         Button btnEditInfo = findViewById(R.id.btnEditInfo);
         Button btnDeleteAccount = findViewById(R.id.btnDeleteAccount);
         Button btnSignOut = findViewById(R.id.btnSignOut);
         BottomNavigationView bottomNavigationView = findViewById(R.id.bottomNavigationView);
 
+        // Set default selected item
         bottomNavigationView.setSelectedItemId(R.id.nav_settings);
 
+        // Set up button listeners
         btnEditInfo.setOnClickListener(v -> navigateTo(DevInfoActivity.class));
         btnDeleteAccount.setOnClickListener(v -> showDeleteAccountDialog());
         btnSignOut.setOnClickListener(v -> signOutUser());
 
-
+        // Handle BottomNavigationView item selection
         bottomNavigationView.setOnItemSelectedListener(item -> handleBottomNavigation(item.getItemId()));
     }
 
+    /**
+     * Navigates to a specified activity.
+     *
+     * @param targetActivity The activity to navigate to.
+     */
     private void navigateTo(Class<?> targetActivity) {
         Intent intent = new Intent(SettingsActivity.this, targetActivity);
         startActivity(intent);
     }
 
+    /**
+     * Shows a confirmation dialog for account deletion.
+     */
     private void showDeleteAccountDialog() {
         new AlertDialog.Builder(this)
                 .setTitle("Delete Account")
@@ -55,6 +65,9 @@ public class SettingsActivity extends AppCompatActivity {
                 .show();
     }
 
+    /**
+     * Deletes the user account from Firebase Authentication and the database.
+     */
     private void deleteAccount() {
         FirebaseUser user = firebaseAuth.getCurrentUser();
 
@@ -84,6 +97,9 @@ public class SettingsActivity extends AppCompatActivity {
                 });
     }
 
+    /**
+     * Signs out the current user and navigates to the login screen.
+     */
     private void signOutUser() {
         firebaseAuth.signOut();
         Toast.makeText(this, "Signed out successfully.", Toast.LENGTH_SHORT).show();
@@ -93,6 +109,12 @@ public class SettingsActivity extends AppCompatActivity {
         finish();
     }
 
+    /**
+     * Handles BottomNavigationView item clicks.
+     *
+     * @param itemId The selected item ID.
+     * @return True if the event was handled; otherwise, false.
+     */
     private boolean handleBottomNavigation(int itemId) {
         if (itemId == R.id.nav_home) {
             navigateTo(MainActivity.class);
@@ -103,16 +125,17 @@ public class SettingsActivity extends AppCompatActivity {
         } else if (itemId == R.id.nav_profile) {
             navigateTo(ProfileActivity.class);
             return true;
-        } else if (itemId == R.id.nav_saved) {
-            // Handle saved items click
-            return true;
-        } else if (itemId == R.id.nav_settings) {
+        }else if (itemId == R.id.nav_settings) {
             // Current activity, no action needed
             return true;
         }
         return false;
     }
 
+
+    /**
+     * Handles successful account deletion.
+     */
     private void onAccountDeletionSuccess() {
         Toast.makeText(SettingsActivity.this, "Account deleted successfully.", Toast.LENGTH_SHORT).show();
         Intent intent = new Intent(SettingsActivity.this, LoginActivity.class);
@@ -121,11 +144,21 @@ public class SettingsActivity extends AppCompatActivity {
         finish();
     }
 
+    /**
+     * Handles failures during the database removal process.
+     *
+     * @param exception The exception thrown during the database operation.
+     */
     private void onDatabaseRemovalFailure(Exception exception) {
         String errorMessage = exception != null ? exception.getMessage() : "Unknown error occurred.";
         Toast.makeText(SettingsActivity.this, "Failed to remove user data. " + errorMessage, Toast.LENGTH_LONG).show();
     }
 
+    /**
+     * Handles failures during user authentication deletion.
+     *
+     * @param exception The exception thrown during the authentication operation.
+     */
     private void onAccountDeletionFailure(Exception exception) {
         String errorMessage = exception != null ? exception.getMessage() : "Unknown error occurred.";
         Toast.makeText(SettingsActivity.this, "Failed to delete user authentication. " + errorMessage, Toast.LENGTH_LONG).show();

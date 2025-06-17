@@ -40,9 +40,6 @@ public class MainActivity extends AppCompatActivity {
             } else if (itemId == R.id.nav_profile) {
                 startActivity(new Intent(MainActivity.this, ProfileActivity.class));
                 return false;
-            } else if (itemId == R.id.nav_saved) {
-                // Handle saved click
-                return true;
             } else if (itemId == R.id.nav_settings) {
                 startActivity(new Intent(MainActivity.this, SettingsActivity.class));
                 return true;

@@ -1,15 +1,15 @@
 package com.example.fotnewsapp;
-
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.Logger;
 import android.content.Intent;
 import android.os.Bundle;
 import android.widget.Button;
 import android.widget.Toast;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
-import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.auth.FirebaseUser;
-import com.google.firebase.database.DatabaseReference;
-import com.google.firebase.database.FirebaseDatabase;
 
 public class SettingsActivity extends AppCompatActivity {
 
@@ -22,6 +22,8 @@ public class SettingsActivity extends AppCompatActivity {
 
         firebaseAuth = FirebaseAuth.getInstance();
 
+        FirebaseDatabase.getInstance().setLogLevel(Logger.Level.DEBUG);
+
         Button btnEditInfo = findViewById(R.id.btnEditInfo);
         Button btnDeleteAccount = findViewById(R.id.btnDeleteAccount);
         Button btnSignOut = findViewById(R.id.btnSignOut);
@@ -30,10 +32,15 @@ public class SettingsActivity extends AppCompatActivity {
             startActivity(new Intent(SettingsActivity.this, DevInfoActivity.class));
         });
 
+
         btnDeleteAccount.setOnClickListener(v -> showDeleteAccountDialog());
 
+
         btnSignOut.setOnClickListener(v -> signOutUser());
+
+
     }
+
 
     private void showDeleteAccountDialog() {
         new AlertDialog.Builder(this)
@@ -44,36 +51,39 @@ public class SettingsActivity extends AppCompatActivity {
                 .show();
     }
 
+
     private void deleteAccount() {
         FirebaseUser user = firebaseAuth.getCurrentUser();
-        if (user == null) {
-            Toast.makeText(this, "No user is logged in.", Toast.LENGTH_SHORT).show();
-            return;
+        if (user != null) {
+            String userId = user.getUid();
+
+
+            DatabaseReference userRef = FirebaseDatabase.getInstance().getReference("UserProfile").child(userId);
+
+
+            userRef.removeValue()
+                    .addOnCompleteListener(task -> {
+                        if (task.isSuccessful()) {
+                            // Proceed to delete user from Firebase Auth
+                            user.delete()
+                                    .addOnCompleteListener(authTask -> {
+                                        if (authTask.isSuccessful()) {
+                                            Toast.makeText(SettingsActivity.this, "Account deleted successfully.", Toast.LENGTH_SHORT).show();
+                                            Intent intent = new Intent(SettingsActivity.this, LoginActivity.class);
+                                            intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                                            startActivity(intent);
+                                            finish();
+                                        } else {
+                                            Toast.makeText(SettingsActivity.this, "Failed to delete user authentication. " + authTask.getException().getMessage(), Toast.LENGTH_LONG).show();
+                                        }
+                                    });
+                        } else {
+                            Toast.makeText(SettingsActivity.this, "Failed to remove user data from database. " + task.getException().getMessage(), Toast.LENGTH_LONG).show();
+                        }
+                    });
         }
-
-        String userId = user.getUid();
-        DatabaseReference userRef = FirebaseDatabase.getInstance().getReference("UserProfile").child(userId);
-
-        userRef.removeValue()
-                .addOnCompleteListener(task -> {
-                    if (task.isSuccessful()) {
-                        user.delete()
-                                .addOnCompleteListener(authTask -> {
-                                    if (authTask.isSuccessful()) {
-                                        Toast.makeText(SettingsActivity.this, "Account deleted successfully.", Toast.LENGTH_SHORT).show();
-                                        Intent intent = new Intent(SettingsActivity.this, LoginActivity.class);
-                                        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
-                                        startActivity(intent);
-                                        finish();
-                                    } else {
-                                        Toast.makeText(SettingsActivity.this, "Failed to delete user authentication. " + authTask.getException().getMessage(), Toast.LENGTH_LONG).show();
-                                    }
-                                });
-                    } else {
-                        Toast.makeText(SettingsActivity.this, "Failed to remove user data from database. " + task.getException().getMessage(), Toast.LENGTH_LONG).show();
-                    }
-                });
     }
+
 
     private void signOutUser() {
         firebaseAuth.signOut();

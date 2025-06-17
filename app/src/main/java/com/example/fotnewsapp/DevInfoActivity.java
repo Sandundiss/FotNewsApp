@@ -58,6 +58,9 @@ public class DevInfoActivity extends AppCompatActivity {
         btnClearInfo.setOnClickListener(v -> clearUserInfoFields());
 
 
+        btnClearInfo.setOnClickListener(v -> clearUserInfoFields());
+
+
         btnSubmit.setOnClickListener(v -> submitUserInfoToDatabase());
 
         btnSignOut.setOnClickListener(v -> showSignOutConfirmation());
@@ -76,8 +79,12 @@ public class DevInfoActivity extends AppCompatActivity {
                 return true;
             } else if (itemId == R.id.nav_profile) {
                 startActivity(new Intent(DevInfoActivity.this, ProfileActivity.class));
+                return true;
+            } else if (itemId == R.id.nav_settings) {
+
                 return false;
             }else if (itemId == R.id.nav_settings) {
+
                 startActivity(new Intent(DevInfoActivity.this, SettingsActivity.class));
                 return true;
             }

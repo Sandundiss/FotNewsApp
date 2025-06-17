@@ -48,6 +48,7 @@ public class AcademicFragment extends Fragment {
 
         setupDotsIndicator();
 
+
         Handler handler = new Handler();
         Runnable runnable = new Runnable() {
             @Override

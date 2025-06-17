@@ -17,7 +17,7 @@ public class UserProfile {
         this.releaseVersion = releaseVersion;
     }
 
-    // Getters and Setters
+
     public String getName() {
         return name;
     }

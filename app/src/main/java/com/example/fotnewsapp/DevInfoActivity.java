@@ -29,7 +29,7 @@ public class DevInfoActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_dev_info);
 
-        // Initialize views
+
         editName = findViewById(R.id.EditName);
         editStudentNumber = findViewById(R.id.EditStudentNumber);
         editPersonalStatement = findViewById(R.id.EditPersonalStatement);
@@ -40,33 +40,32 @@ public class DevInfoActivity extends AppCompatActivity {
         tvUsername = findViewById(R.id.tvUsername);
         tvEmail = findViewById(R.id.tvEmail);
 
-        // Initialize Firebase
         firebaseAuth = FirebaseAuth.getInstance();
         databaseReference = FirebaseDatabase.getInstance().getReference("UserProfile");
 
-        // Retrieve data passed from LoginActivity
+
         String username = getIntent().getStringExtra("username");
         String email = getIntent().getStringExtra("email");
 
-        // Display user info
+
         tvUsername.setText("Username: " + (username != null ? username : "N/A"));
         tvEmail.setText("Email: " + (email != null ? email : "N/A"));
 
-        // Load user information
+
         loadUserInfo();
 
-        // Clear Info button functionality
+
         btnClearInfo.setOnClickListener(v -> clearUserInfoFields());
 
-        // Submit button functionality
+
         btnSubmit.setOnClickListener(v -> submitUserInfoToDatabase());
 
         btnSignOut.setOnClickListener(v -> showSignOutConfirmation());
 
-        // Set up Bottom Navigation
+
         BottomNavigationView bottomNavigationView = findViewById(R.id.bottomNavigationView);
 
-        // Set bottom navigation listener
+
         bottomNavigationView.setOnItemSelectedListener(item -> {
             int itemId = item.getItemId();
             if (itemId == R.id.nav_home) {
@@ -78,10 +77,7 @@ public class DevInfoActivity extends AppCompatActivity {
             } else if (itemId == R.id.nav_profile) {
                 startActivity(new Intent(DevInfoActivity.this, ProfileActivity.class));
                 return false;
-            } else if (itemId == R.id.nav_saved) {
-                // Handle saved click
-                return true;
-            } else if (itemId == R.id.nav_settings) {
+            }else if (itemId == R.id.nav_settings) {
                 startActivity(new Intent(DevInfoActivity.this, SettingsActivity.class));
                 return true;
             }
@@ -90,7 +86,7 @@ public class DevInfoActivity extends AppCompatActivity {
 
     }
 
-    // Function to load user information from Firebase
+
     private void loadUserInfo() {
         if (firebaseAuth.getCurrentUser() != null) {
             String username = firebaseAuth.getCurrentUser().getDisplayName();
@@ -120,7 +116,7 @@ public class DevInfoActivity extends AppCompatActivity {
         }
     }
 
-    // Function to clear all user information fields
+
     private void clearUserInfoFields() {
         editName.setText("");
         editStudentNumber.setText("");
@@ -129,7 +125,7 @@ public class DevInfoActivity extends AppCompatActivity {
         Toast.makeText(this, "Fields Cleared. Enter new data.", Toast.LENGTH_SHORT).show();
     }
 
-    // Function to submit user information to the database
+
     private void submitUserInfoToDatabase() {
         String name = editName.getText().toString().trim();
         String studentNumber = editStudentNumber.getText().toString().trim();
@@ -159,7 +155,7 @@ public class DevInfoActivity extends AppCompatActivity {
         }
     }
 
-    // Function to show sign-out confirmation dialog
+
     private void showSignOutConfirmation() {
         new AlertDialog.Builder(this)
                 .setTitle("Sign Out")
@@ -169,7 +165,7 @@ public class DevInfoActivity extends AppCompatActivity {
                 .show();
     }
 
-    // Function to sign out the user
+
     private void signOutUser() {
         FirebaseAuth.getInstance().signOut();
         startActivity(new Intent(this, LoginActivity.class));

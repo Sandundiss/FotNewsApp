@@ -5,7 +5,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical">
 
-    <!-- Toolbar -->
+
     <com.google.android.material.appbar.MaterialToolbar
         android:id="@+id/toolbar"
         android:layout_width="match_parent"
@@ -22,7 +22,7 @@
             android:textStyle="bold"/>
     </com.google.android.material.appbar.MaterialToolbar>
 
-    <!-- Horizontal Category Buttons -->
+
     <LinearLayout
         style="?android:attr/buttonBarStyle"
         android:layout_width="match_parent"
@@ -68,7 +68,7 @@
             android:textAllCaps="false"/>
     </LinearLayout>
 
-    <!-- FrameLayout to hold fragments -->
+
     <FrameLayout
         android:id="@+id/newsContainer"
         android:layout_width="match_parent"

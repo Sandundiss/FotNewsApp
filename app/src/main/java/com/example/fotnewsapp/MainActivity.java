@@ -39,11 +39,7 @@ public class MainActivity extends AppCompatActivity {
                 return true;
             } else if (itemId == R.id.nav_profile) {
                 startActivity(new Intent(MainActivity.this, ProfileActivity.class));
-
                 return true;
-
-                return false;
-
             } else if (itemId == R.id.nav_settings) {
                 startActivity(new Intent(MainActivity.this, SettingsActivity.class));
                 return true;
